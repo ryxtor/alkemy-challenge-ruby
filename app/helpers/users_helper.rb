@@ -1,0 +1,35 @@
+module UsersHelper
+  class Hash
+    def self.encrypt(password)
+      BCrypt::Password.create(password)
+    end
+
+    def self.valid?(password, encrypted)
+      my_password = BCrypt::Password.new(encrypted)
+      my_password == password
+    rescue StandardError
+      false
+    end
+  end
+
+  class Validator
+    def self.valid_credentials?(email, password)
+      user = User.find_by_email(email)
+      return [false, 'email already taken', :unauthorized] if user
+
+      return [false, 'password too short', :bad_request] if password.size < 6
+
+      true
+    end
+
+    def self.valid_user_token?(header)
+      return [false, 'Invalid token', :unauthorized] unless header
+
+      token = header.split.last
+      email = JwtHelper::JsonWebToken.decode(token)
+      return [false, 'Unauthorized user', :forbidden] if User.where(email:, token:).empty?
+
+      [User.find_by_email(email), 'User ok', :ok]
+    end
+  end
+end
