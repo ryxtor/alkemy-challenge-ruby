@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Users routes
+  post 'v1/user', to: 'users#authenticate', as: 'authentication_user'
+  post 'v1/user/add', to: 'users#add', as: 'add_user_path'
 end
