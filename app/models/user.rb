@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   private
 
-  def add_token
+  def generate_token
     self.token = JwtHelper::JsonWebToken.encode(email)
   end
 end
