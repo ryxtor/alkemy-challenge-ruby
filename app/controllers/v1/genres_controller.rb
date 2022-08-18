@@ -78,11 +78,11 @@ class V1::GenresController < ApplicationController
 
   def genre_index(genres)
     genres.map do |genre|
-      { id: genre.id, name: genre.name, image: genre.image.attachment.url }
+      { id: genre.id, name: genre.name, image: url_for(genre.image) }
     end
   end
 
   def genre_show(genre)
-    { id: genre.id, name: genre.name, image: genre.image.attachment.url, movies: genre.movies }
+    { id: genre.id, name: genre.name, image: url_for(genre.image), movies: genre.movies }
   end
 end

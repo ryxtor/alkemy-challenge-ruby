@@ -9,6 +9,7 @@ class V1::UsersController < ApplicationController
                     password: UsersHelper::Hash.encrypt(params[:password]))
     if user.valid?
       user.save
+      NotifierMailer.send_signup_email(user).deliver_now
       render json: user.to_json(only: %I[name email token]), status: :ok
     else
       render json: { 'error:': user.errors.first.message }, status: :bad_request
