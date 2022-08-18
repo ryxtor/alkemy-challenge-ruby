@@ -98,7 +98,7 @@ class V1::MoviesController < ApplicationController
         id: movie.id,
         title: movie.title,
         release_date: movie.release_date,
-        image: movie.image.attachment.url
+        image: url_for(movie.image)
       }
     end
   end
@@ -109,7 +109,7 @@ class V1::MoviesController < ApplicationController
       title: movie.title,
       release_date: movie.release_date,
       rating: movie.rating,
-      image: movie.image.attachment.url,
+      image: url_for(movie.image),
       characters: movie.characters,
       genres: movie.genres
     }

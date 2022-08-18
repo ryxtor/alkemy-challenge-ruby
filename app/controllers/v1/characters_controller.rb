@@ -79,13 +79,13 @@ class V1::CharactersController < ApplicationController
   def character_index(characters)
     characters.map do |character|
       { id: character.id, name: character.name, age: character.age, weight: character.weight,
-        history: character.history, image: character.image.attachment.url }
+        history: character.history, image: url_for(character.image) }
     end
   end
 
   def character_show(character)
     { id: character.id, name: character.name, age: character.age, weight: character.weight,
-      history: character.history, image: character.image.attachment.url }
+      history: character.history, image: url_for(character.image) }
   end
 
   def character_params
