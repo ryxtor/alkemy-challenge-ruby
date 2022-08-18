@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     resources :characters, only: %i[index show create update destroy]
+    resources :genres, only: %i[index show create update destroy]
+    resources :movies, only: %i[index show create update destroy]
   end
 end
