@@ -29,7 +29,7 @@ class V1::CharactersController < ApplicationController
                  elsif params[:age]
                    Character.where(age: params[:age])
                  elsif params[:movie]
-                   Character.where('movie ~* ?', params[:movie])
+                   Character.joins(:movies).where('movies.title ~* ?', params[:movie])
                  else
                    Character.all
                  end
