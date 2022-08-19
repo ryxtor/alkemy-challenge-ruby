@@ -1,6 +1,10 @@
 # Alkemy Challenge Ruby
 
 > This is an API were you can create a user, authenticate the user, create / get / update / delete characters, genres and movies.
+
+## Documentation
+
+ [Alkemy Challenge Ruby API](https://documenter.getpostman.com/view/19878230/VUqoQJaU)
 ## Built With
 
   - Ruby
@@ -37,7 +41,7 @@
   
   $ `rails s`
 
-  ## Live Demo
+## Live Demo
 
   You can use the following link as the api endpoint:
 
